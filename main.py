@@ -48,7 +48,7 @@ async def generate_weekly_quest(update:Update, context: ContextTypes.DEFAULT_TYP
         task = randint(1, len(d) - 1)
     print(f'Now task is {d[task]}')
     dqp = user.get("weeklyQuestsProgress")
-    mp = randint((dqp[d[task]] + 1) * 7,(dqp[d[task]] + 10) * 7)
+    mp = randint(dqp[d[task]] + 1 * 7,dqp[d[task]] + 10 * 7)
     cd = datetime.now()
     if d[task] == "login":
         quest_id = wquests.insert_one({"name": d[task], "description": dD[d[task]], "type": 7, "max_progress": 1, "current_progress": 0, "completed": False, "year": cd.year, "month": cd.month ,"day" : cd.day, "passed": 0}).inserted_id
